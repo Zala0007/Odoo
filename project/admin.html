@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - SkillSwap</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-exchange-alt"></i>
+                <span>Skill&nbsp;<span class="half">Swap</span> <span class="adm">Admin</span></span>
+            </div>
+            
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="requests.html" class="nav-link">Requests</a>
+                <a href="profile.html" class="nav-link">Profile</a>
+                <a href="admin.html" class="nav-link active">Admin</a>
+                <button class="nav-link logout-btn" id="logoutBtn">Logout</button>
+            </div>
+            
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Admin Dashboard -->
+    <main class="admin-main">
+        <div class="container">
+            <div class="page-header">
+                <h1>Admin Dashboard</h1>
+                <p>Platform management and analytics</p>
+            </div>
+            
+            <!-- Stats Overview -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="totalUsers">0</h3>
+                        <p>Total Users</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="totalRequests">0</h3>
+                        <p>Swap Requests</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="completedSwaps">0</h3>
+                        <p>Completed Swaps</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 id="avgRating">0</h3>
+                        <p>Average Rating</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Admin Tabs -->
+            <div class="admin-tabs">
+                <button class="tab-btn active" data-tab="users">User Management</button>
+                <button class="tab-btn" data-tab="swaps">Swap Activity</button>
+                <button class="tab-btn" data-tab="feedback">Feedback & Ratings</button>
+                <button class="tab-btn" data-tab="messages">Platform Messages</button>
+                <button class="tab-btn" data-tab="reports">Reports</button>
+            </div>
+            
+            <!-- Tab Content -->
+            <div class="tab-content">
+                <!-- User Management Tab -->
+                <div class="tab-panel active" id="usersTab">
+                    <div class="panel-header">
+                        <h2>User Management</h2>
+                        <div class="panel-actions">
+                            <input type="text" id="userSearch" placeholder="Search users...">
+                        </div>
+                    </div>
+                    
+                    <div class="users-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>User</th>
+                                    <th>Email</th>
+                                    <th>Join Date</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="usersTableBody">
+                                <!-- Users will be dynamically loaded -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- Swap Activity Tab -->
+                <div class="tab-panel" id="swapsTab">
+                    <div class="panel-header">
+                        <h2>Swap Activity</h2>
+                        <div class="panel-actions">
+                            <select id="swapStatusFilter">
+                                <option value="">All Status</option>
+                                <option value="pending">Pending</option>
+                                <option value="accepted">Accepted</option>
+                                <option value="rejected">Rejected</option>
+                                <option value="completed">Completed</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="swaps-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>From</th>
+                                    <th>To</th>
+                                    <th>Skills</th>
+                                    <th>Status</th>
+                                    <th>Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="swapsTableBody">
+                                <!-- Swaps will be dynamically loaded -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- Feedback Tab -->
+                <div class="tab-panel" id="feedbackTab">
+                    <div class="panel-header">
+                        <h2>Feedback & Ratings</h2>
+                    </div>
+                    
+                    <div class="feedback-list" id="adminFeedbackList">
+                        <!-- Feedback will be dynamically loaded -->
+                    </div>
+                </div>
+                
+                <!-- Messages Tab -->
+                <div class="tab-panel" id="messagesTab">
+                    <div class="panel-header">
+                        <h2>Platform Messages</h2>
+                        <button class="btn btn-primary" id="newMessageBtn">New Message</button>
+                    </div>
+                    
+                    <div class="messages-list" id="messagesList">
+                        <!-- Messages will be dynamically loaded -->
+                    </div>
+                </div>
+                
+                <!-- Reports Tab -->
+                <div class="tab-panel" id="reportsTab">
+                    <div class="panel-header">
+                        <h2>Reports & Analytics</h2>
+                    </div>
+                    
+                    <div class="reports-grid">
+                        <div class="report-card">
+                            <h3>User Activity Report</h3>
+                            <p>Download detailed user activity logs</p>
+                            <button class="btn btn-outline" onclick="downloadReport('user-activity')">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                        
+                        <div class="report-card">
+                            <h3>Feedback Summary</h3>
+                            <p>Comprehensive feedback and ratings report</p>
+                            <button class="btn btn-outline" onclick="downloadReport('feedback')">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                        
+                        <div class="report-card">
+                            <h3>Swap Statistics</h3>
+                            <p>Detailed swap request and completion statistics</p>
+                            <button class="btn btn-outline" onclick="downloadReport('swap-stats')">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- New Message Modal -->
+    <div class="modal" id="newMessageModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Send Platform Message</h2>
+                <span class="close" id="closeMessageModal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="messageForm">
+                    <div class="form-group">
+                        <label for="messageTitle">Title</label>
+                        <input type="text" id="messageTitle" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="messageContent">Message</label>
+                        <textarea id="messageContent" rows="6" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="messageType">Message Type</label>
+                        <select id="messageType">
+                            <option value="info">Information</option>
+                            <option value="warning">Warning</option>
+                            <option value="maintenance">Maintenance</option>
+                            <option value="feature">New Feature</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" id="cancelMessage">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

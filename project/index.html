@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillSwap - Find Your Perfect Skill Exchange</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-exchange-alt"></i>
+                <span>Skill&nbsp;<span class="half">Swap</span></span>
+            </div>
+            
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="requests.html" class="nav-link" id="requestsLink" style="display: none;">Requests</a>
+                <a href="profile.html" class="nav-link" id="profileLink" style="display: none;">Profile</a>
+                <a href="admin.html" class="nav-link" id="adminLink" style="display: none;">Admin</a>
+                <a href="login.html" class="nav-link" id="loginLink">Login</a>
+                <button class="nav-link logout-btn" id="logoutBtn" style="display: none;">Logout</button>
+            </div>
+            
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Exchange Skills, Grow Together</h1>
+                <p>Connect with like-minded individuals and trade your expertise for theirs</p>
+            </div>
+        </section>
+
+        <!-- Search and Filters -->
+        <section class="search-section">
+            <div class="container">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search by skill (e.g., Photoshop, Excel)">
+                </div>
+                
+                <div class="filters">
+                    <select id="availabilityFilter">
+                        <option value="">All Availability</option>
+                        <option value="weekends">Weekends</option>
+                        <option value="evenings">Evenings</option>
+                        <option value="weekdays">Weekdays</option>
+                        <option value="flexible">Flexible</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- User Profiles Grid -->
+        <section class="profiles-section">
+            <div class="container">
+                <div class="profiles-grid" id="profilesGrid">
+                    <!-- Profiles will be dynamically loaded here -->
+                </div>
+                
+                <!-- Pagination -->
+                <div class="pagination" id="pagination">
+                    <!-- Pagination will be dynamically generated -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Profile Modal -->
+    <div class="modal" id="profileModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalUserName"></h2>
+                <span class="close" id="closeModal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="profile-info">
+                    <div class="profile-avatar">
+                        <img id="modalUserAvatar" src="https://images.pexels.com/photos/1043471/pexels-photo-1043471.jpeg" alt="Profile">
+                    </div>
+                    <div class="profile-details">
+                        <div class="rating">
+                            <div class="stars" id="modalUserRating"></div>
+                            <span id="modalRatingText"></span>
+                        </div>
+                        <p class="location" id="modalUserLocation"></p>
+                    </div>
+                </div>
+                
+                <div class="skills-section">
+                    <h3>Skills Offered</h3>
+                    <div class="skills-tags" id="modalSkillsOffered"></div>
+                </div>
+                
+                <div class="skills-section">
+                    <h3>Skills Wanted</h3>
+                    <div class="skills-tags" id="modalSkillsWanted"></div>
+                </div>
+                
+                <div class="availability-section">
+                    <h3>Availability</h3>
+                    <div class="availability-tags" id="modalAvailability"></div>
+                </div>
+                
+                <div class="feedback-section">
+                    <h3>Recent Feedback</h3>
+                    <div class="feedback-list" id="modalFeedback"></div>
+                </div>
+                
+                <div class="modal-actions">
+                    <button class="btn btn-primary" id="requestSwapBtn">Request Skill Swap</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Swap Request Modal -->
+    <div class="modal" id="swapRequestModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Request Skill Swap</h2>
+                <span class="close" id="closeSwapModal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="swapRequestForm">
+                    <div class="form-group">
+                        <label for="offeredSkill">Your Skill to Offer</label>
+                        <select id="offeredSkill" required>
+                            <option value="">Select a skill you offer</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="requestedSkill">Skill You Want</label>
+                        <select id="requestedSkill" required>
+                            <option value="">Select a skill you want</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="swapMessage">Message</label>
+                        <textarea id="swapMessage" rows="4" placeholder="Tell them why you'd like to swap skills..."></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" id="cancelSwapRequest">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Send Request</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

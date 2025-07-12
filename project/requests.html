@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swap Requests - SkillSwap</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-exchange-alt"></i>
+                <span>Skill&nbsp;<span class="half">Swap</span></span>
+            </div>
+            
+            <div class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="requests.html" class="nav-link active">Requests</a>
+                <a href="profile.html" class="nav-link">Profile</a>
+                <a href="admin.html" class="nav-link" id="adminLink" style="display: none;">Admin</a>
+                <button class="nav-link logout-btn" id="logoutBtn">Logout</button>
+            </div>
+            
+            <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Requests Dashboard -->
+    <main class="requests-main">
+        <div class="container">
+            <div class="page-header">
+                <h1>Swap Requests</h1>
+                <p>Manage your incoming and outgoing skill swap requests</p>
+            </div>
+            
+            <!-- Filter Tabs -->
+            <div class="request-tabs">
+                <button class="tab-btn active" data-tab="all">All Requests</button>
+                <button class="tab-btn" data-tab="received">Received</button>
+                <button class="tab-btn" data-tab="sent">Sent</button>
+                <button class="tab-btn" data-tab="completed">Completed</button>
+            </div>
+            
+            <!-- Requests List -->
+            <div class="requests-container">
+                <div class="requests-list" id="requestsList">
+                    <!-- Requests will be dynamically loaded here -->
+                </div>
+                
+                <!-- Pagination -->
+                <div class="pagination" id="requestsPagination">
+                    <!-- Pagination will be dynamically generated -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Feedback Modal -->
+    <div class="modal" id="feedbackModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Leave Feedback</h2>
+                <span class="close" id="closeFeedbackModal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="feedbackForm">
+                    <div class="form-group">
+                        <label>Rating</label>
+                        <div class="star-rating" id="starRating">
+                            <i class="fas fa-star" data-rating="1"></i>
+                            <i class="fas fa-star" data-rating="2"></i>
+                            <i class="fas fa-star" data-rating="3"></i>
+                            <i class="fas fa-star" data-rating="4"></i>
+                            <i class="fas fa-star" data-rating="5"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="feedbackComment">Comment</label>
+                        <textarea id="feedbackComment" rows="4" placeholder="Share your experience with this skill swap..."></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" id="cancelFeedback">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Submit Feedback</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/requests.js"></script>
+</body>
+</html>
